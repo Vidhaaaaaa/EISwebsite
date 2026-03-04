@@ -27,7 +27,7 @@ def create_app() -> Flask:
         return render_template(
             "home.html",
             hero_bg=HERO_BG,
-            events=EVENTS
+            images=list_gallery_images()[:6]
         )
 
     @app.route("/about")
