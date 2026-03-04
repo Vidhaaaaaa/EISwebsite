@@ -8,10 +8,6 @@ def create_app() -> Flask:
     app = Flask(__name__)
 
     def list_gallery_images() -> list[str]:
-        """
-        Drop images into: static/gallery/
-        They will automatically appear on /gallery (no code changes needed).
-        """
         gallery_dir = Path(app.static_folder) / "gallery"
         if not gallery_dir.exists():
             return []
@@ -24,21 +20,6 @@ def create_app() -> Flask:
                 items.append(f"gallery/{name}")
         return items
 
-    EVENTS = [
-        {
-            "title": "Build Night",
-            "meta": "Monthly · Low-pressure co-work + tiny demos",
-        },
-        {
-            "title": "Prototype Sprint",
-            "meta": "Weekend · Idea → prototype → story",
-        },
-        {
-            "title": "Founder AMA",
-            "meta": "Small room · Honest Q&A",
-        },
-    ]
-
     HERO_BG = "img/hero-bg.svg"
 
     @app.route("/")
@@ -46,8 +27,7 @@ def create_app() -> Flask:
         return render_template(
             "home.html",
             hero_bg=HERO_BG,
-            events=EVENTS,
-            gallery_preview=list_gallery_images()[:6],
+            events=EVENTS
         )
 
     @app.route("/about")
@@ -70,5 +50,7 @@ def create_app() -> Flask:
 
 if __name__ == "__main__":
     application = create_app()
-    application.run(debug=True)
+    debug = os.environ.get("FLASK_ENV") == "development"
+    port = int(os.environ.get("PORT", 5000))
+    application.run(host="0.0.0.0", port=port, debug=debug)
 
