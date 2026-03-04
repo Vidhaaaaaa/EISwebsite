@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Enhanced shooting stars background with cursor interaction
   const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  
   if (!prefersReducedMotion) {
     const canvas = document.createElement("canvas");
     canvas.className = "starfield";
@@ -73,24 +74,24 @@ document.addEventListener("DOMContentLoaded", () => {
     resize();
     window.addEventListener("resize", resize);
 
-    // Background stars
-    for (let i = 0; i < 80; i++) {
+    // Background stars - smaller and white
+    for (let i = 0; i < 100; i++) {
       state.stars.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        r: Math.random() * 1.2 + 0.3,
-        alpha: Math.random() * 0.4 + 0.1,
-        twinkle: Math.random() * 0.015 + 0.005,
+        r: Math.random() * 1.5 + 0.5, // Smaller stars
+        alpha: Math.random() * 0.6 + 0.2,
+        twinkle: Math.random() * 0.02 + 0.01,
       });
     }
 
     const spawnShooter = (x, y) => {
-      if (state.shooters.length < 3) { // Limit max shooters
+      if (state.shooters.length < 5) { // More shooters allowed
         state.shooters.push({
           x,
           y,
-          vx: (Math.random() * 1.5 + 2) * (Math.random() > 0.5 ? 1 : -1),
-          vy: -Math.random() * 1.5 - 2,
+          vx: (Math.random() * 2 + 3) * (Math.random() > 0.5 ? 1 : -1),
+          vy: -Math.random() * 2 - 3,
           life: 1,
         });
       }
@@ -101,25 +102,35 @@ document.addEventListener("DOMContentLoaded", () => {
       state.targetMouseX = e.clientX;
       state.targetMouseY = e.clientY;
       const now = performance.now();
-      if (now - lastMouseMove > 300) { // Less frequent shooting
+      if (now - lastMouseMove > 200) { // More frequent shooting
         lastMouseMove = now;
         spawnShooter(e.clientX, e.clientY);
       }
     });
+
+    // Also spawn shooters periodically for constant effect
+    setInterval(() => {
+      if (Math.random() > 0.7) {
+        spawnShooter(
+          Math.random() * window.innerWidth,
+          Math.random() * window.innerHeight
+        );
+      }
+    }, 1000);
 
     const loop = () => {
       if (!ctx) return;
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
       // Smooth mouse following
-      state.mouseX += (state.targetMouseX - state.mouseX) * 0.1;
-      state.mouseY += (state.targetMouseY - state.mouseY) * 0.1;
+      state.mouseX += (state.targetMouseX - state.mouseX) * 0.15;
+      state.mouseY += (state.targetMouseY - state.mouseY) * 0.15;
 
       // Background stars with subtle parallax
-      ctx.fillStyle = "rgba(229, 240, 255, 0.6)";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
       for (const s of state.stars) {
         s.alpha += (Math.random() - 0.5) * s.twinkle;
-        s.alpha = Math.max(0.1, Math.min(0.6, s.alpha));
+        s.alpha = Math.max(0.2, Math.min(0.8, s.alpha));
         ctx.globalAlpha = s.alpha;
         
         // Subtle mouse parallax
@@ -131,33 +142,40 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.fill();
       }
 
-      // Shooting stars
+      // Shooting stars with enhanced trails
       ctx.globalAlpha = 1;
       for (let i = state.shooters.length - 1; i >= 0; i--) {
         const sh = state.shooters[i];
         sh.x += sh.vx;
         sh.y += sh.vy;
-        sh.life -= 0.015;
+        sh.life -= 0.01;
         
         if (sh.life <= 0 || sh.y < -50 || sh.x < -50 || sh.x > window.innerWidth + 50) {
           state.shooters.splice(i, 1);
           continue;
         }
         
-        // Gradient trail
+        // Enhanced gradient trail
         const gradient = ctx.createLinearGradient(
           sh.x, sh.y,
-          sh.x - sh.vx * 8, sh.y - sh.vy * 8
+          sh.x - sh.vx * 12, sh.y - sh.vy * 12
         );
-        gradient.addColorStop(0, `rgba(191, 219, 254, ${sh.life * 0.9})`);
-        gradient.addColorStop(1, "rgba(191, 219, 254, 0)");
+        gradient.addColorStop(0, `rgba(135, 206, 250, ${sh.life})`);
+        gradient.addColorStop(0.5, `rgba(255, 255, 255, ${sh.life * 0.8})`);
+        gradient.addColorStop(1, "rgba(135, 206, 250, 0)");
         
         ctx.strokeStyle = gradient;
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(sh.x, sh.y);
-        ctx.lineTo(sh.x - sh.vx * 8, sh.y - sh.vy * 8);
+        ctx.lineTo(sh.x - sh.vx * 12, sh.y - sh.vy * 12);
         ctx.stroke();
+        
+        // Add glow effect
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "rgba(135, 206, 250, 0.8)";
+        ctx.stroke();
+        ctx.shadowBlur = 0;
       }
 
       requestAnimationFrame(loop);
@@ -165,40 +183,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loop();
   }
-
-  // Gallery category filtering
-  const categoryBtns = document.querySelectorAll('.category-btn');
-  if (categoryBtns.length > 0) {
-    categoryBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        categoryBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        btn.classList.add('active');
-        
-        // Here you would typically filter gallery items
-        // For now, it's just a visual feedback
-        const category = btn.dataset.category;
-        console.log(`Filtering by category: ${category}`);
-      });
-    });
-  }
-
-  // Interest tag interactions for Get Involved page
-  const interestTags = document.querySelectorAll('.interest-tag');
-  if (interestTags.length > 0) {
-    interestTags.forEach(tag => {
-      tag.addEventListener('click', () => {
-        tag.classList.toggle('active');
-        
-        // Get all active tags
-        const activeTags = Array.from(document.querySelectorAll('.interest-tag.active'))
-          .map(t => t.textContent);
-        
-        console.log('Selected interests:', activeTags);
-      });
-    });
-  }
-
-  // Navigation toggle only
 });
