@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery · EIS MUJ{% endblock %}
+
+{% block content %}
+  <section class="gallery-hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="eyebrow">Visual Story</p>
+        <h1 class="page-title">Where Innovation Comes to Life</h1>
+        <p class="hero-description">
+          Every image tells a story of creativity, collaboration, and breakthrough moments.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="container">
+      {% if images %}
+        <div class="gallery-grid">
+          {% for img in images %}
+            <a href="{{ url_for('static', filename=img) }}" target="_blank" class="gallery-item">
+              <img src="{{ url_for('static', filename=img) }}" alt="EIS MUJ moment" loading="lazy" />
+            </a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty-state">
+          <div class="empty-animation">
+            <div class="camera-icon">📸</div>
+            <div class="pulse-ring"></div>
+          </div>
+          <h2>Gallery Loading</h2>
+          <p>Amazing moments are being captured. Stay tuned for visual inspiration!</p>
+          <div class="preview-grid">
+            <div class="preview-item">
+              <span class="preview-icon">🚀</span>
+              <span>Launch Events</span>
+            </div>
+            <div class="preview-item">
+              <span class="preview-icon">💡</span>
+              <span>Innovation Labs</span>
+            </div>
+            <div class="preview-item">
+              <span class="preview-icon">🏆</span>
+              <span>Victory Moments</span>
+            </div>
+            <div class="preview-item">
+              <span class="preview-icon">🎯</span>
+              <span>Success Stories</span>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
+

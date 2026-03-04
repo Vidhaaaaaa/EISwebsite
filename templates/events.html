@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Events · EIS MUJ{% endblock %}
+
+{% block content %}
+  <section class="page">
+    <div class="container">
+      <p class="eyebrow">Events</p>
+      <h1 class="page__title">Events that feel light but useful.</h1>
+      <p class="lead">A couple of simple formats, repeated enough times to matter.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <header class="section__header">
+        <h2>Formats</h2>
+        <p class="muted">You can rename or remix these later.</p>
+      </header>
+      <div class="grid3">
+        <article class="card">
+          <h3>Build Night</h3>
+          <p>Quiet co-work, short demos, no big stage.</p>
+        </article>
+        <article class="card">
+          <h3>Prototype Sprint</h3>
+          <p>Weekend mini-sprint: idea → small prototype.</p>
+        </article>
+        <article class="card">
+          <h3>Founder AMA</h3>
+          <p>Small-room Q&A with builders from outside campus.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--last">
+    <div class="container">
+      <header class="section__header">
+        <h2>Upcoming Events</h2>
+        <p class="muted">Join us for our next sessions</p>
+      </header>
+      
+      <div class="events-timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <div class="date-day">15</div>
+            <div class="date-month">MAR</div>
+          </div>
+          <div class="timeline-content">
+            <h4>Build Night: Spring Edition</h4>
+            <p class="timeline-time">6:00 PM - 9:00 PM</p>
+            <p class="timeline-desc">Bring your laptop and ideas. We'll provide the space and snacks.</p>
+            <button class="btn btn--primary btn--small">Register</button>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <div class="date-day">22</div>
+            <div class="date-month">MAR</div>
+          </div>
+          <div class="timeline-content">
+            <h4>Weekend Prototype Sprint</h4>
+            <p class="timeline-time">10:00 AM - 6:00 PM</p>
+            <p class="timeline-desc">48-hour sprint to turn ideas into working prototypes.</p>
+            <button class="btn btn--primary btn--small">Register</button>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <div class="date-day">29</div>
+            <div class="date-month">MAR</div>
+          </div>
+          <div class="timeline-content">
+            <h4>Founder AMA: Tech Startup Stories</h4>
+            <p class="timeline-time">5:00 PM - 6:30 PM</p>
+            <p class="timeline-desc">Q&A with founders who've built and scaled tech companies.</p>
+            <button class="btn btn--primary btn--small">Register</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="event-cta">
+        <h3>Want to host an event?</h3>
+        <p>We're always looking for new ideas and formats. Share your concept with us!</p>
+        <a href="{{ url_for('get_involved') }}" class="btn btn--primary">Propose Event</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
