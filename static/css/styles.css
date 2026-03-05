@@ -2512,6 +2512,7 @@ main {
 }
 
 /* Get Involved page map responsive */
+@media (max-width: 768px) {
   .map-container iframe {
     height: 250px !important;
     width: 100% !important;
@@ -2521,11 +2522,6 @@ main {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 30px;
-  }
-  
-  /* Get Involved page extra spacing */
-  main {
-    padding-bottom: 120px !important;
   }
   
   /* Mobile logo centering */
