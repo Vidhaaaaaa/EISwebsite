@@ -1,10 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".nav__toggle");
+  const navClose = document.querySelector(".nav__close");
   const navLinks = document.querySelector(".nav__links");
 
   if (navToggle && navLinks) {
     navToggle.addEventListener("click", () => {
       navLinks.classList.toggle("is-open");
+    });
+  }
+
+  if (navClose && navLinks) {
+    navClose.addEventListener("click", () => {
+      navLinks.classList.remove("is-open");
     });
   }
 
