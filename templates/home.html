@@ -1,107 +1,146 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block title %}EIS MUJ · Ideas that ship{% endblock
+%} {% block content %}
+<section class="hero hero--image">
+  <div class="hero__bgimg" aria-hidden="true"></div>
+  <div class="hero__overlay" aria-hidden="true"></div>
 
-{% block title %}EIS MUJ · Ideas that ship{% endblock %}
-
-{% block content %}
-  <section class="hero hero--image">
-    <div
-      class="hero__bgimg"
-      aria-hidden="true"
-    ></div>
-    <div class="hero__overlay" aria-hidden="true"></div>
-
-    <div class="container hero__inner">
-      <div class="hero__copy">
-        <p class="eyebrow">Entrepreneur & Innovation Society · MUJ</p>
-        <h1 class="hero__title">
-          <span class="gradient-text">Empowering</span> Young Entrepreneurs.
-        </h1>
-        <p class="lead">
-          EIS MUJ is a student-led community at Manipal University Jaipur for people who like turning ideas into
-          real work.
-        </p>
-        <div class="actions">
-          <a class="btn btn--primary" href="{{ url_for('get_involved') }}">Join</a>
-          <a class="btn btn--ghost" href="#events">Events</a>
-          <a class="btn btn--ghost" href="{{ url_for('gallery') }}">Gallery</a>
-        </div>
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow">Entrepreneur & Innovation Society · MUJ</p>
+      <h1 class="hero__title">
+        <span class="gradient-text">Empowering</span> Young Entrepreneurs.
+      </h1>
+      <p class="lead">
+        EIS MUJ is a student-led community at Manipal University Jaipur for
+        people who like turning ideas into real work.
+      </p>
+      <div class="actions">
+        <a class="btn btn--primary" href="{{ url_for('get_involved') }}"
+          >Join</a
+        >
+        <a class="btn btn--ghost" href="#events">Events</a>
+        <a class="btn btn--ghost" href="{{ url_for('gallery') }}">Gallery</a>
       </div>
+    </div>
 
-      <div class="hero__rhs">
-        <div class="orbit-container">
-          <div class="orbit-center">
-            <div class="pulse-dot"></div>
-          </div>
-          <div class="orbit orbit-1">
-            <div class="orbit-item orbit-item-1">I</div>
-          </div>
-          <div class="orbit orbit-2">
-            <div class="orbit-item orbit-item-2">N</div>
-          </div>
-          <div class="orbit orbit-3">
-            <div class="orbit-item orbit-item-3">N</div>
-          </div>
-          <div class="orbit orbit-4">
-            <div class="orbit-item orbit-item-4">O</div>
-          </div>
-          <div class="orbit orbit-5">
-            <div class="orbit-item orbit-item-5">V</div>
-          </div>
-          <div class="orbit orbit-6">
-            <div class="orbit-item orbit-item-6">A</div>
-          </div>
-          <div class="orbit orbit-7">
-            <div class="orbit-item orbit-item-7">T</div>
-          </div>
-          <div class="orbit orbit-8">
-            <div class="orbit-item orbit-item-8">E</div>
-          </div>
+    <div class="hero__rhs">
+      <div class="orbit-container">
+        <div class="orbit-center">
+          <div class="pulse-dot"></div>
+        </div>
+        <div class="orbit orbit-1">
+          <div class="orbit-item orbit-item-1">I</div>
+        </div>
+        <div class="orbit orbit-2">
+          <div class="orbit-item orbit-item-2">N</div>
+        </div>
+        <div class="orbit orbit-3">
+          <div class="orbit-item orbit-item-3">N</div>
+        </div>
+        <div class="orbit orbit-4">
+          <div class="orbit-item orbit-item-4">O</div>
+        </div>
+        <div class="orbit orbit-5">
+          <div class="orbit-item orbit-item-5">V</div>
+        </div>
+        <div class="orbit orbit-6">
+          <div class="orbit-item orbit-item-6">A</div>
+        </div>
+        <div class="orbit orbit-7">
+          <div class="orbit-item orbit-item-7">T</div>
+        </div>
+        <div class="orbit orbit-8">
+          <div class="orbit-item orbit-item-8">E</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" id="events">
-    <div class="container">
-      <header class="section__header">
-        <h2 class="section__title">Events</h2>
-        <p class="section__subtitle">Join us for our sessions!</p>
-      </header>
-      <div class="events-grid">
-        <article class="event-card">
-          <div class="event-image">
-            <img src="{{ url_for('static', filename='gallery/startup-forge.jpg') }}" alt="Startup Forge" loading="lazy" />
-            <div class="event-date-badge">
-              <span class="date-day">30-31</span>
-              <span class="date-month">JAN, 2026</span>
-            </div>
+<section class="section" id="events">
+  <div class="container">
+    <header class="section__header">
+      <h2 class="section__title">Events</h2>
+      <p class="section__subtitle">Join us for our sessions!</p>
+    </header>
+    <div class="events-grid">
+      <article class="event-card">
+        <div class="event-image">
+          <img
+            src="{{ url_for('static', filename='events/one-day-ceo.jpeg') }}"
+            alt="One Day CEO"
+            loading="lazy"
+          />
+          <div class="event-date-badge">
+            <span class="date-day">14</span>
+            <span class="date-month">MAR, 2026</span>
           </div>
-          <div class="event-content">
-            <h3 class="event-title">Startup Forge</h3>
-            <p class="event-time">Completed</p>
-            <p class="event-description"> A 2-day Entrepreneurship Ideathon designed to help transform ideas into real startup concepts.</p>
-            <a href="{{ url_for('gallery') }}" class="btn btn--primary btn--small">View Gallery</a>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">ONE DAY CEO</h3>
+          <p class="event-time" style="color: red">UPCOMING</p>
+          <p class="event-description">
+            Step into the boardroom and take the ultimate leadership challenge
+            at One Day CEO - where strategy, quick thinking, and leadership
+            decide the winner!
+          </p>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSc8fBZeJyPRgJnxWpjHTen-HhEFT8ooeqlrw3gFn9KtB1lpGQ/viewform?usp=dialog"
+            class="btn btn--primary btn--small"
+            >Register Now</a
+          >
+        </div>
+      </article>
+      <article class="event-card">
+        <div class="event-image">
+          <img
+            src="{{ url_for('static', filename='gallery/startup-forge.jpg') }}"
+            alt="Startup Forge"
+            loading="lazy"
+          />
+          <div class="event-date-badge">
+            <span class="date-day">30-31</span>
+            <span class="date-month">JAN, 2026</span>
           </div>
-        </article>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">Startup Forge</h3>
+          <p class="event-time">Completed</p>
+          <p class="event-description">
+            A 2-day Entrepreneurship Ideathon designed to help transform ideas
+            into real startup concepts.
+          </p>
+          <a href="{{ url_for('gallery') }}" class="btn btn--primary btn--small"
+            >View Gallery</a
+          >
+        </div>
+      </article>
 
-        <article class="event-card">
-          <div class="event-image">
-            <img src="{{ url_for('static', filename='gallery/hult-prize.jpg') }}" alt="The Hult Prize" loading="lazy" />
-            <div class="event-date-badge">
-              <span class="date-day">22</span>
-              <span class="date-month">FEB, 2026</span>
-            </div>
+      <article class="event-card">
+        <div class="event-image">
+          <img
+            src="{{ url_for('static', filename='gallery/hult-prize.jpg') }}"
+            alt="The Hult Prize"
+            loading="lazy"
+          />
+          <div class="event-date-badge">
+            <span class="date-day">22</span>
+            <span class="date-month">FEB, 2026</span>
           </div>
-          <div class="event-content">
-            <h3 class="event-title">The Hult Prize - on campus round</h3>
-            <p class="event-time">Completed</p>
-            <p class="event-description">Pitch to Investors, get a chance to win $1,000,000 in funding.</p>
-            <a href="{{ url_for('gallery') }}" class="btn btn--primary btn--small">View Gallery</a>
-          </div>
-        </article>
-      </div>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">The Hult Prize - on campus round</h3>
+          <p class="event-time">Completed</p>
+          <p class="event-description">
+            Pitch to Investors, get a chance to win $1,000,000 in funding.
+          </p>
+          <a href="{{ url_for('gallery') }}" class="btn btn--primary btn--small"
+            >View Gallery</a
+          >
+        </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
 {% endblock %}
-
