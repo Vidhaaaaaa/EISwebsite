@@ -45,6 +45,10 @@ def create_app() -> Flask:
     def get_involved():
         return render_template("get_involved.html")
     
+    @app.route("/event-form")
+    def event_form():
+        return render_template("event_form.html")
+    
     @app.route("/pwing")
     def pwing():
         return "pwong"
