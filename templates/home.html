@@ -67,6 +67,33 @@
       <article class="event-card">
         <div class="event-image">
           <img
+            src="{{ url_for('static', filename='events/incubation-week.png') }}"
+            alt="Incubation Week"
+            loading="lazy"
+          />
+          <div class="event-date-badge">
+            <span class="date-day">23-27</span>
+            <span class="date-month">MAR, 2026</span>
+          </div>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">Incubation Week</h3>
+          <p class="event-time" style="color: red">Upcoming</p>
+          <p class="event-description">
+            If you have a startup idea, innovation, or problem-solving concept, 
+            this is your opportunity to transform it into a real startup with
+             expert guidance and support.
+          </p>
+          <a
+            href="{{ url_for('event_form') }}"
+            class="btn btn--primary btn--small"
+            >Register</a
+          >
+        </div>
+      </article>
+      <article class="event-card">
+        <div class="event-image">
+          <img
             src="{{ url_for('static', filename='events/one-day-ceo.jpeg') }}"
             alt="One Day CEO"
             loading="lazy"
@@ -78,16 +105,16 @@
         </div>
         <div class="event-content">
           <h3 class="event-title">ONE DAY CEO</h3>
-          <p class="event-time" style="color: red">UPCOMING</p>
+          <p class="event-time">Completed</p>
           <p class="event-description">
             Step into the boardroom and take the ultimate leadership challenge
             at One Day CEO - where strategy, quick thinking, and leadership
             decide the winner!
           </p>
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSc8fBZeJyPRgJnxWpjHTen-HhEFT8ooeqlrw3gFn9KtB1lpGQ/viewform?usp=dialog"
+            href="{{ url_for('gallery') }}"
             class="btn btn--primary btn--small"
-            >Register Now</a
+            >View Gallery</a
           >
         </div>
       </article>

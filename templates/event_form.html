@@ -1,70 +1,36 @@
 {% extends "base.html" %}
 
-{% block title %}Event Registration - EIS MUJ{% endblock %}
+{% block title %}Incubation Week Registration - EIS MUJ{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="page-hero page-hero--image">
-    <div class="page-hero__bg"></div>
-    <div class="page-hero__overlay"></div>
-    <div class="container page-hero__inner">
-        <div class="page-hero__content">
-            <h1 class="page-hero__title">Event Registration</h1>
-            <p class="page-hero__subtitle">Join us for an amazing experience</p>
-        </div>
-    </div>
-</section>
-
     <!-- Form Section -->
     <section class="section">
         <div class="container">
             <div class="form-container">
                 <form id="eventForm" class="event-form">
                     <div class="form__header">
-                        <h2 class="form__title">Register for One Day CEO</h2>
-                        <p class="form__subtitle">Fill in your details to participate</p>
+                        <h2 class="form__title">Startup Registration</h2>
+                        <p class="form__subtitle">Fill in your startup details to participate</p>
                     </div>
 
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="fullName" class="form__label">Full Name *</label>
-                            <input type="text" id="fullName" name="fullName" class="form__input" placeholder="John Doe" required>
+                            <label for="startupName" class="form__label">Name of Startup *</label>
+                            <input type="text" id="startupName" name="startupName" class="form__input" placeholder="Your Startup Name" required>
                         </div>
                     </div>
 
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="whatsappNumber" class="form__label">WhatsApp Number *</label>
-                            <input type="tel" id="whatsappNumber" name="whatsappNumber" class="form__input" placeholder="+91 98765 43210" required>
+                            <label for="studentNames" class="form__label">Names of Students *</label>
+                            <textarea id="studentNames" name="studentNames" class="form__input" placeholder="Enter all team member names separated by commas" rows="3" required></textarea>
                         </div>
                     </div>
 
                     <div class="form__row">
                         <div class="form__group">
-                            <label for="outlookId" class="form__label">Outlook ID *</label>
-                            <input type="email" id="outlookId" name="outlookId" class="form__input" placeholder="your.name@jaipur.manipal.edu" required>
-                        </div>
-                    </div>
-
-                    <div class="form__row">
-                        <div class="form__group">
-                            <label for="course" class="form__label">Course *</label>
-                            <input type="text" id="form" name="course" class="form__input" placeholder="BTech CSE" required>
-                        </div>
-                    </div>
-
-                    <div class="form__row">
-                        <div class="form__group">
-                            <label for="year" class="form__label">Year *</label>
-                            <select id="year" name="year" class="form__select" required>
-                                <option value="">Select your year</option>
-                                <option value="1st Year">1st Year</option>
-                                <option value="2nd Year">2nd Year</option>
-                                <option value="3rd Year">3rd Year</option>
-                                <option value="4th Year">4th Year</option>
-                                <option value="5th Year">5th Year</option>
-                                <option value="Other">Other</option>
-                            </select>
+                            <label for="emailId" class="form__label">Email-ID *</label>
+                            <input type="email" id="emailId" name="emailId" class="form__input" placeholder="team@example.com" required>
                         </div>
                     </div>
 
@@ -77,19 +43,66 @@
 
                     <div class="form__row">
                         <div class="form__group">
-                            <label class="form__label">Participation Type (MAX 4 MEMBERS)*</label>
-                            <div class="form__radio-group">
-                                <label class="form__radio-label">
-                                    <input type="radio" name="participationType" value="Individual" class="form__radio" required>
-                                    <span class="form__radio-custom"></span>
-                                    <span class="form__radio-text">Individual</span>
-                                </label>
-                                <label class="form__radio-label">
-                                    <input type="radio" name="participationType" value="Team" class="form__radio" required>
-                                    <span class="form__radio-custom"></span>
-                                    <span class="form__radio-text">Team</span>
-                                </label>
-                            </div>
+                            <label for="department" class="form__label">Department *</label>
+                            <input type="text" id="department" name="department" class="form__input" placeholder="Computer Science & Engineering" required>
+                        </div>
+                    </div>
+
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label for="ideaSector" class="form__label">Idea Sector *</label>
+                            <select id="ideaSector" name="ideaSector" class="form__select" required onchange="toggleOtherField()">
+                                <option value="">Select your idea sector</option>
+                                <option value="EdTech">EdTech</option>
+                                <option value="FinTech">FinTech</option>
+                                <option value="HealthTech">HealthTech</option>
+                                <option value="AgriTech">AgriTech</option>
+                                <option value="CleanTech">CleanTech</option>
+                                <option value="E-commerce">E-commerce</option>
+                                <option value="SaaS">SaaS</option>
+                                <option value="AI/ML">AI/ML</option>
+                                <option value="IoT">IoT</option>
+                                <option value="Blockchain">Blockchain</option>
+                                <option value="Social Impact">Social Impact</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form__row" id="otherSectorRow" style="display: none;">
+                        <div class="form__group">
+                            <label for="otherSector" class="form__label">Specify Other Sector *</label>
+                            <input type="text" id="otherSector" name="otherSector" class="form__input" placeholder="Please specify your idea sector">
+                        </div>
+                    </div>
+
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label for="mobileNumber" class="form__label">Mobile Number *</label>
+                            <input type="tel" id="mobileNumber" name="mobileNumber" class="form__input" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label for="uniqueness" class="form__label">Explain Uniqueness of Innovation *</label>
+                            <textarea id="uniqueness" name="uniqueness" class="form__input" placeholder="What makes your innovation unique and different from existing solutions?" rows="4" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label for="concept" class="form__label">Concept and Objective of Idea *</label>
+                            <textarea id="concept" name="concept" class="form__input" placeholder="Explain your concept, goals, and what problem you're solving" rows="4" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form__row">
+                        <div class="form__group">
+                            <label for="pitchDeck" class="form__label">Pitch Deck *</label>
+                            <input type="url" id="pitchDeck" name="pitchDeck" class="form__input" placeholder="https://docs.google.com/presentation/..." required>
+                            <small class="form__help">Share the link to your pitch deck (Google Slides, PowerPoint, etc.)</small>
+                            <small class="form__help" style="color: red">Should be accessible to everyone (no request/password required)</small>
                         </div>
                     </div>
 
@@ -114,6 +127,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('eventForm');
     const messageDiv = document.getElementById('formMessage');
 
+    // Toggle other sector field
+    window.toggleOtherField = function() {
+        const ideaSector = document.getElementById('ideaSector');
+        const otherSectorRow = document.getElementById('otherSectorRow');
+        
+        if (ideaSector.value === 'Other') {
+            otherSectorRow.style.display = 'block';
+        } else {
+            otherSectorRow.style.display = 'none';
+        }
+    };
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -121,24 +146,64 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
         
+        // Handle "Other" sector logic
+        if (data.ideaSector !== 'Other') {
+            data.otherSector = ''; // Clear other field if not "Other"
+        }
+        
+        // Comprehensive debugging
+        console.log('=== FORM SUBMISSION DEBUG ===');
+        console.log(' Raw FormData:', formData);
+        console.log(' Converted to Object:', data);
+        console.log(' All field names:', Object.keys(data));
+        console.log(' Field values:');
+        for (const [key, value] of Object.entries(data)) {
+            console.log(`  ${key}: "${value}"`);
+        }
+        console.log(' JSON to send:', JSON.stringify(data, null, 2));
+        
+        // Simple test - log what we're sending
+        console.log('=== SENDING DATA ===');
+        console.log('startupName:', data.startupName);
+        console.log('studentNames:', data.studentNames);
+        console.log('emailId:', data.emailId);
+        console.log('registrationNumber:', data.registrationNumber);
+        console.log('department:', data.department);
+        console.log('ideaSector:', data.ideaSector);
+        console.log('mobileNumber:', data.mobileNumber);
+        console.log('uniqueness:', data.uniqueness);
+        console.log('concept:', data.concept);
+        console.log('pitchDeck:', data.pitchDeck);
+        console.log('otherSector:', data.otherSector);
+        console.log('=== END SENDING ===');
+        
         // Show loading message
         showMessage('Submitting your registration...', 'loading');
         
-        // Send data to Google Apps Script
-        fetch('https://script.google.com/macros/s/AKfycbwyFNBqwPTHWjbPApUJ64hbrbBVRbuynQhhVs_1KdAo0mjxyHQR5WmjV4svbxlCbbuL_w/exec', {
+        // Send data to Flask backend
+        fetch('/submit-registration', {
             method: 'POST',
-            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         })
-        .then(() => {
-            showMessage('Registration submitted successfully! We\'ll contact you soon.', 'success');
-            form.reset();
+        .then(response => response.json())
+        .then(result => {
+            console.log('Response received:', result);
+            
+            if (result.status === 'success') {
+                showMessage('Registration submitted successfully! We\'ll contact you soon.', 'success');
+                form.reset();
+                // Reset other field visibility
+                document.getElementById('otherSectorRow').style.display = 'none';
+            } else {
+                showMessage('Error: ' + result.message, 'error');
+            }
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error('Error details:', error);
+            console.error('Error message:', error.message);
             showMessage('There was an error submitting your registration. Please try again.', 'error');
         });
     });
@@ -183,39 +248,40 @@ document.addEventListener('DOMContentLoaded', function() {
     font-size: 1.1rem;
     color: rgba(226, 232, 240, 0.8);
 }
-        .form__row {
-            margin-bottom: 24px;
-        }
 
-        .form__group {
-            position: relative;
-        }
+.form__row {
+    margin-bottom: 24px;
+}
 
-        .form__label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: rgba(226, 232, 240, 0.9);
-            font-size: 0.95rem;
-        }
+.form__group {
+    position: relative;
+}
 
-        .form__input,
-        .form__select {
-            width: 100%;
-            padding: 12px 16px;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
+.form__label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: rgba(226, 232, 240, 0.9);
+    font-size: 0.95rem;
+}
 
-        .form__input:focus,
-        .form__select:focus {
-            outline: none;
-            border-color: rgba(96, 165, 250, 0.5);
+.form__input,
+.form__select {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.form__input:focus,
+.form__select:focus {
+    outline: none;
+    border-color: rgba(96, 165, 250, 0.5);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
@@ -336,6 +402,14 @@ document.addEventListener('DOMContentLoaded', function() {
             background: rgba(59, 130, 246, 0.1);
             border: 1px solid rgba(59, 130, 246, 0.3);
             color: #3b82f6;
+        }
+
+        .form__help {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: rgba(148, 163, 184, 0.7);
+            font-style: italic;
         }
 
         /* Responsive adjustments */
