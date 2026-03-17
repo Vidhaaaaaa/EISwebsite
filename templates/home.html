@@ -57,6 +57,86 @@
   </div>
 </section>
 
+<!-- Incubation Week Promotion Section -->
+<section class="incubation-promo">
+  <div class="container">
+    <div class="incubation-promo__content">
+      <div class="incubation-promo__text">
+        <h2 class="incubation-promo__title">
+          <span class="gradient-text">Incubation Week 5.0</span>
+        </h2>
+        <p class="incubation-promo__subtitle">
+          Transform your startup idea into reality with expert guidance and support
+        </p>
+        <p class="incubation-promo__description">
+          If you have a startup idea, innovation, or problem-solving concept, whether you have a concept 
+          or a working prototype, this is your opportunity to take it to the next level.
+        </p>
+        <div class="incubation-promo__details">
+          <div class="detail-item">
+            <span class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </span>
+            <span class="detail-text">March 23-28, 2026</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </span>
+            <span class="detail-text">5-Day Intensive Program</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </span>
+            <span class="detail-text">Opportunity for Pre-Incubation / Incubation at AIC-MUJ</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </span>
+            <span class="detail-text">Access to funding opportunities and investor networks</span>
+          </div>
+        </div>
+        <div class="incubation-promo__actions">
+          <a href="{{ url_for('event_form') }}" class="btn btn--primary btn--large">
+            <span>Register Your Startup</span>
+            <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="incubation-promo__image">
+        <div class="image-wrapper">
+          <img 
+            src="{{ url_for('static', filename='events/incubation-week.PNG') }}" 
+            alt="Incubation Week 2026"
+            class="incubation-image"
+            loading="lazy"
+          />
+          <div class="image-overlay"></div>
+          <div class="floating-badge">
+            <span class="badge-text">Limited Seats</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="events">
   <div class="container">
     <header class="section__header">
@@ -72,7 +152,7 @@
             loading="lazy"
           />
           <div class="event-date-badge">
-            <span class="date-day">23-27</span>
+            <span class="date-day">23-28</span>
             <span class="date-month">MAR, 2026</span>
           </div>
         </div>
