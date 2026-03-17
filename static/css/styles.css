@@ -2835,6 +2835,13 @@ main {
   background: rgba(37, 99, 235, 0.1);
   border-radius: 8px;
   border: 1px solid rgba(37, 99, 235, 0.2);
+  flex-shrink: 0;
+}
+
+.detail-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
 }
 
 .detail-text {
@@ -2953,6 +2960,13 @@ main {
     max-width: 500px;
     margin: 0 auto;
   }
+  
+  .incubation-promo__details {
+    align-items: flex-start;
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto 40px auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2974,10 +2988,21 @@ main {
   
   .incubation-promo__details {
     gap: 12px;
+    max-width: 350px;
   }
   
   .detail-item {
     font-size: 1rem;
+  }
+  
+  .detail-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .detail-icon svg {
+    width: 16px;
+    height: 16px;
   }
   
   .incubation-promo__actions {
@@ -3008,6 +3033,20 @@ main {
   
   .incubation-promo__subtitle {
     font-size: 1.1rem;
+  }
+  
+  .incubation-promo__details {
+    max-width: 300px;
+  }
+  
+  .detail-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .detail-icon svg {
+    width: 14px;
+    height: 14px;
   }
   
   .incubation-promo__actions {
